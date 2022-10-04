@@ -1,6 +1,8 @@
 package fr.icom.info.m1.balleauprisonnier_mvn;
 
 
+import java.util.Random;
+
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.transform.Rotate;
 import javafx.scene.image.Image;
@@ -34,7 +36,7 @@ public class Player
 	   * @param color couleur du joueur
 	   * @param yInit position verticale
 	   */
-	  Player(GraphicsContext gc, String color, int xInit, int yInit, String side)
+	  Player(GraphicsContext gc, String color, int xInit, int yInit, String side, String equipe)
 	  {
 		// Tous les joueurs commencent au centre du canvas, 
 	    x = xInit;               
@@ -52,25 +54,26 @@ public class Player
 			directionArrow = new Image("assets/PlayerArrowUp.png");
 		}
         
+       
         PlayerDirectionArrow = new ImageView();
         PlayerDirectionArrow.setImage(directionArrow);
         PlayerDirectionArrow.setFitWidth(10);
         PlayerDirectionArrow.setPreserveRatio(true);
         PlayerDirectionArrow.setSmooth(true);
         PlayerDirectionArrow.setCache(true);
-
-        Image tilesheetImage = new Image("assets/orc.png");
+        
+        Image tilesheetImage = new Image(equipe);
         sprite = new Sprite(tilesheetImage, 0,0, Duration.seconds(.2), side);
         sprite.setX(x);
         sprite.setY(y);
         //directionArrow = sprite.getClip().;
 
 	    // Tous les joueurs ont une vitesse aleatoire entre 0.0 et 1.0
-        // Random randomGenerator = new Random();
-        // step = randomGenerator.nextFloat();
+         Random randomGenerator = new Random();
+         step = randomGenerator.nextFloat() +3 ;
 
         // Pour commencer les joueurs ont une vitesse / un pas fixe
-        step = 1;
+     
 	    
 	  }
 

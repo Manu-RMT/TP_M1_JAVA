@@ -18,7 +18,7 @@ import javafx.scene.paint.Color;
 public class Field extends Canvas {
 	
 	/** Joueurs */
-	Player [] joueurs = new Player[2];
+	Player [] joueurs = new Player[6];
 	/** Couleurs possibles */
 	String[] colorMap = new String[] {"blue", "green", "orange", "purple", "yellow"};
 	/** Tableau traçant les evenements */
@@ -48,12 +48,15 @@ public class Field extends Canvas {
         gc = this.getGraphicsContext2D();
         
         /** On initialise le terrain de jeu */
-    	joueurs[0] = new Player(gc, colorMap[0], w/2, h-50, "bottom");
-    	joueurs[0].display();
-
-    	joueurs[1] = new Player(gc, colorMap[1], w/2, 20, "top");
-    	joueurs[1].display();
-
+                
+        for(int i = 0 ; i < 3; i ++) {
+        	joueurs[i] = new Player(gc, colorMap[0], w/2, h-50, "bottom", "assets/PlayerBlue.png");
+        	joueurs[i].display();
+        }
+        for(int i = 3 ; i < 6; i ++) {
+        	joueurs[i] = new Player(gc, colorMap[1], w/2, 20, "top", "assets/PlayerRed.png");
+        	joueurs[i].display();
+        }	
 
 	    /** 
 	     * Event Listener du clavier 
@@ -122,7 +125,7 @@ public class Field extends Canvas {
 	        		{
 	        			joueurs[i].turnRight();	        			
 	        		}
-	        		if (i==1 && input.contains("A"))
+	        		if (i==1 && input.contains("Q"))
 	        		{
 	        			joueurs[i].moveLeft();
 	        		} 
@@ -130,7 +133,7 @@ public class Field extends Canvas {
 	        		{
 	        			joueurs[i].moveRight();	        			
 	        		}
-	        		if (i==1 && input.contains("W"))
+	        		if (i==1 && input.contains("Z"))
 	        		{
 	        			joueurs[i].turnLeft();
 	        		} 
@@ -139,7 +142,11 @@ public class Field extends Canvas {
 	        			joueurs[i].turnRight();	        			
 	        		}
 	        		if (input.contains("SPACE")){
-	        			joueurs[i].shoot();
+	        			joueurs[0].shoot();
+					}
+	        		
+	        		if (input.contains("ENTER")){
+	        			joueurs[1].shoot();
 					}
 
 	        		
