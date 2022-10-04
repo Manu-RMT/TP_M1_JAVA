@@ -18,7 +18,8 @@ import javafx.scene.paint.Color;
 public class Field extends Canvas {
 	
 	/** Joueurs */
-	Player [] joueurs = new Player[6];
+	Player [] equipe1 = new Player[3];
+	Player [] equipe2 = new Player[3];
 	/** Couleurs possibles */
 	String[] colorMap = new String[] {"blue", "green", "orange", "purple", "yellow"};
 	/** Tableau traçant les evenements */
@@ -48,14 +49,27 @@ public class Field extends Canvas {
         gc = this.getGraphicsContext2D();
         
         /** On initialise le terrain de jeu */
-                
+
         for(int i = 0 ; i < 3; i ++) {
-        	joueurs[i] = new Player(gc, colorMap[0], w/2, h-50, "bottom", "assets/PlayerBlue.png");
-        	joueurs[i].display();
+			int pos = 3* width/4;
+			if (i == 0) {
+				pos = width / 2;
+			} else if (i == 1) {
+				pos = width /4 ;
+			}
+
+			equipe1[i] = new Player(gc, colorMap[0], pos, h-50, "bottom", "assets/PlayerBlue.png");
+        	equipe1[i].display();
         }
-        for(int i = 3 ; i < 6; i ++) {
-        	joueurs[i] = new Player(gc, colorMap[1], w/2, 20, "top", "assets/PlayerRed.png");
-        	joueurs[i].display();
+		for(int i = 0 ; i < 3; i ++) {
+			int pos = 3* width/4;
+			if (i == 0) {
+				pos = width / 2;
+			} else if (i == 1) {
+				pos = width /4 ;
+			}
+        	equipe2[i] = new Player(gc, colorMap[1], pos, 20, "top", "assets/PlayerRed.png");
+			equipe2[i].display();
         }	
 
 	    /** 
@@ -106,58 +120,66 @@ public class Field extends Canvas {
 	            gc.setFill( Color.LIGHTGRAY);
 	            gc.fillRect(0, 0, width, height);
 	        	
-	            // Deplacement et affichage des joueurs
-	        	for (int i = 0; i < joueurs.length; i++) 
+	            // Deplacement et affichage des equipe1
+	        	for (int i = 0; i < equipe1.length; i++) 
 	    	    {
 	        		if (i==0 && input.contains("LEFT"))
 	        		{
-	        			joueurs[i].moveLeft();
+	        			equipe1[i].moveLeft();
 	        		} 
 	        		if (i==0 && input.contains("RIGHT")) 
 	        		{
-	        			joueurs[i].moveRight();	        			
+	        			equipe1[i].moveRight();	        			
 	        		}
 	        		if (i==0 && input.contains("UP"))
 	        		{
-	        			joueurs[i].turnLeft();
+	        			equipe1[i].turnLeft();
 	        		} 
 	        		if (i==0 && input.contains("DOWN")) 
 	        		{
-	        			joueurs[i].turnRight();	        			
+	        			equipe1[i].turnRight();	        			
 	        		}
 	        		if (i==1 && input.contains("Q"))
 	        		{
-	        			joueurs[i].moveLeft();
+	        			equipe1[i].moveLeft();
 	        		} 
 	        		if (i==1 && input.contains("D")) 
 	        		{
-	        			joueurs[i].moveRight();	        			
+	        			equipe1[i].moveRight();	        			
 	        		}
 	        		if (i==1 && input.contains("Z"))
 	        		{
-	        			joueurs[i].turnLeft();
+	        			equipe1[i].turnLeft();
 	        		} 
 	        		if (i==1 && input.contains("S")) 
 	        		{
-	        			joueurs[i].turnRight();	        			
+	        			equipe1[i].turnRight();	        			
 	        		}
 	        		if (input.contains("SPACE")){
-	        			joueurs[0].shoot();
+	        			equipe1[0].shoot();
 					}
 	        		
 	        		if (input.contains("ENTER")){
-	        			joueurs[1].shoot();
+	        			equipe1[1].shoot();
 					}
 
-	        		
-	        		joueurs[i].display();
+	        		equipe1[i].display();
+					equipe2[i].display();
 	    	    }
+
+				for (int i = 0; i < equipe2.length; i++)
+				{
+					equipe2[i].display();
+				}
 	    	}
 	     }.start(); // On lance la boucle de rafraichissement 
 	     
 	}
 
-	public Player[] getJoueurs() {
-		return joueurs;
+	public Player[] getEquipe1() {
+		return equipe1;
+	}
+	public Player[] getEquipe2() {
+		return equipe2;
 	}
 }
