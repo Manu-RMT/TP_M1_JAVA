@@ -152,6 +152,7 @@ public class Player
 
 	  void shoot(){
 	  	sprite.playShoot();
+	  	Projectile p = new Projectile(angle);
 	  }
 	  
 	  /**
