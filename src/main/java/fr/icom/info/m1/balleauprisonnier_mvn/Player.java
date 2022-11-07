@@ -17,7 +17,7 @@ import javafx.util.Duration;
 public class Player 
 {
 	  double x;       // position horizontale du joueur
-	  final double y; 	  // position verticale du joueur
+	  double y; 	  // position verticale du joueur
 	  double angle = 90; // rotation du joueur, devrait toujour être en 0 et 180
 	  double step;    // pas d'un joueur
 	  String playerColor;
@@ -134,7 +134,6 @@ public class Player
 
 	  }
 
-	  
 	  /**
 	   *  Rotation du joueur vers la droite
 	   */
@@ -152,7 +151,6 @@ public class Player
 
 	  void shoot(){
 	  	sprite.playShoot();
-	  	Projectile p = new Projectile(angle);
 	  }
 	  
 	  /**

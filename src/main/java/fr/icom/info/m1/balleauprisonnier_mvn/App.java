@@ -38,6 +38,7 @@ public class App extends Application
 		root.getChildren().add(gameField.getEquipe2()[0].sprite);
 		root.getChildren().add(gameField.getEquipe2()[1].sprite);
 		root.getChildren().add(gameField.getEquipe2()[2].sprite);
+		root.getChildren().add(gameField.getProjectile().sprite);
 
         // On ajoute la scene a la fenetre et on affiche
         stage.setScene( scene );

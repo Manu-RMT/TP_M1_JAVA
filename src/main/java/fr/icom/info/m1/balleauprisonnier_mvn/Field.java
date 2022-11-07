@@ -24,7 +24,8 @@ public class Field extends Canvas {
 	String[] colorMap = new String[] {"blue", "green", "orange", "purple", "yellow"};
 	/** Tableau traçant les evenements */
     ArrayList<String> input = new ArrayList<String>();
-    
+
+	Projectile balle;
 
     final GraphicsContext gc;
     final int width;
@@ -70,7 +71,9 @@ public class Field extends Canvas {
 			}
         	equipe2[i] = new Player(gc, colorMap[1], pos, 20, "top", "assets/PlayerRed.png");
 			equipe2[i].display();
-        }	
+        }
+
+		balle = new Projectile(gc,0,100,100);
 
 	    /** 
 	     * Event Listener du clavier 
@@ -156,11 +159,11 @@ public class Field extends Canvas {
 	        			equipe1[i].turnRight();	        			
 	        		}
 	        		if (input.contains("SPACE")){
-	        			equipe1[0].shoot();
+	        			equipe1[i].shoot();
 					}
 	        		
 	        		if (input.contains("ENTER")){
-	        			equipe1[1].shoot();
+	        			equipe2[i].shoot();
 					}
 
 	        		equipe1[i].display();
@@ -181,5 +184,9 @@ public class Field extends Canvas {
 	}
 	public Player[] getEquipe2() {
 		return equipe2;
+	}
+
+	public Projectile getProjectile() {
+		return balle;
 	}
 }
