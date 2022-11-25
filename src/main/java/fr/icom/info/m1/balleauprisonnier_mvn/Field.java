@@ -19,12 +19,11 @@ public class Field extends Canvas {
 	
 	/** Joueurs */
 	Player [] equipe1 = new Player[3];
-	Player [] equipe2 = new Player[3];
+	IA[] equipe2 = new IA[3];
 	/** Couleurs possibles */
 	String[] colorMap = new String[] {"blue", "green", "orange", "purple", "yellow"};
 	/** Tableau traçant les evenements */
     ArrayList<String> input = new ArrayList<String>();
-
 	Projectile balle;
 
     final GraphicsContext gc;
@@ -43,7 +42,7 @@ public class Field extends Canvas {
 		super(w, h); 
 		width = w;
 		height = h;
-		
+
 		/** permet de capturer le focus et donc les evenements clavier et souris */
 		this.setFocusTraversable(true);
 		
@@ -58,18 +57,9 @@ public class Field extends Canvas {
 			} else if (i == 1) {
 				pos = width /4 ;
 			}
-
 			equipe1[i] = new Player(gc, colorMap[0], pos, h-50, "bottom", "assets/PlayerBlue.png");
         	equipe1[i].display();
-        }
-		for(int i = 0 ; i < 3; i ++) {
-			int pos = 3* width/4;
-			if (i == 0) {
-				pos = width / 2;
-			} else if (i == 1) {
-				pos = width /4 ;
-			}
-        	equipe2[i] = new Player(gc, colorMap[1], pos, 20, "top", "assets/PlayerRed.png");
+			equipe2[i] = new IA(gc, colorMap[1], pos, 20, "top", "assets/PlayerRed.png");
 			equipe2[i].display();
         }
 
@@ -168,12 +158,12 @@ public class Field extends Canvas {
 
 	        		equipe1[i].display();
 					equipe2[i].display();
+					equipe2[i].MouvementRandom();
+
 	    	    }
 
-				for (int i = 0; i < equipe2.length; i++)
-				{
-					equipe2[i].display();
-				}
+				balle.display();
+
 	    	}
 	     }.start(); // On lance la boucle de rafraichissement 
 	     
@@ -182,7 +172,7 @@ public class Field extends Canvas {
 	public Player[] getEquipe1() {
 		return equipe1;
 	}
-	public Player[] getEquipe2() {
+	public IA[] getEquipe2() {
 		return equipe2;
 	}
 
