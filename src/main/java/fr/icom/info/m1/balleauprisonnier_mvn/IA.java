@@ -20,6 +20,10 @@ public class IA extends Player {
         super(gc, color, xInit, yInit, side, equipe);
     }
 
+
+    /**
+     * Deplacement aleatoire de l'IA
+     */
     void MouvementRandom(){
 
             if (this.x > 520)
