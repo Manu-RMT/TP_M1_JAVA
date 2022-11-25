@@ -26,16 +26,16 @@ public class Projectile {
         xpos = xproj;
         ypos = yproj;
 
+       // Deplacement(angle);
         sprite = new Sprite(projectile, 0,0, Duration.seconds(.2),"top");
         sprite.setX(xpos);
         sprite.setY(ypos);
 
-        Deplacement(angle);
     }
     
     void Deplacement(double direction){
-//    	xpos = xpos * Math.cos(direction);
-//    	ypos = ypos * Math.sin(direction);
+    	xpos = xpos * Math.cos(direction);
+    	ypos = ypos * Math.sin(direction);
     }
 
     void display()

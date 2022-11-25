@@ -33,7 +33,6 @@ public class IA extends Player {
             if (this.x < 10)
             {
                 directionIA = "droite";
-                System.out.print(directionIA);
             }
 
             if(Objects.equals(directionIA, "droite")){
@@ -44,4 +43,24 @@ public class IA extends Player {
                 x-=this.step/3;
             }
     }
+
+    void Turning_IA(){
+        if (this.angle > 45)
+        {
+            directionIA = "gauche";
+        }
+        if (this.angle < -45)
+        {
+            directionIA = "droite";
+        }
+
+        if(Objects.equals(directionIA, "droite")){
+            spriteAnimate();
+            angle+=this.step/3;
+        }else{
+            spriteAnimate();
+                angle-=this.step/3;
+        }
+    }
+
 }

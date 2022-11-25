@@ -18,8 +18,8 @@ import javafx.scene.paint.Color;
 public class Field extends Canvas {
 	
 	/** Joueurs */
-	Player [] equipe1 = new Player[3];
-	IA[] equipe2 = new IA[3];
+	Human [] equipe1 = new Human[3];
+	IA[] equipeRobot = new IA[3];
 	/** Couleurs possibles */
 	String[] colorMap = new String[] {"blue", "green", "orange", "purple", "yellow"};
 	/** Tableau traçant les evenements */
@@ -57,13 +57,13 @@ public class Field extends Canvas {
 			} else if (i == 1) {
 				pos = width /4 ;
 			}
-			equipe1[i] = new Player(gc, colorMap[0], pos, h-50, "bottom", "assets/PlayerBlue.png");
+			equipe1[i] = new Human(gc, colorMap[0], pos, h-50, "bottom", "assets/PlayerBlue.png");
         	equipe1[i].display();
-			equipe2[i] = new IA(gc, colorMap[1], pos, 20, "top", "assets/PlayerRed.png");
-			equipe2[i].display();
+			equipeRobot[i] = new IA(gc, colorMap[1], pos, 2, "top", "assets/PlayerRed.png");
+			equipeRobot[i].display();
         }
 
-		balle = new Projectile(gc,0,100,100);
+		balle = new Projectile(gc,0,width/2,height/2);
 
 	    /** 
 	     * Event Listener du clavier 
@@ -114,51 +114,52 @@ public class Field extends Canvas {
 	            gc.fillRect(0, 0, width, height);
 	        	
 	            // Deplacement et affichage des equipe1
-	        	for (int i = 0; i < equipe1.length; i++) 
+	        	for (int i = 0; i < equipe1.length; i++)
 	    	    {
 	        		if (i==0 && input.contains("LEFT"))
 	        		{
 	        			equipe1[i].moveLeft();
-	        		} 
-	        		if (i==0 && input.contains("RIGHT")) 
+	        		}
+	        		if (i==0 && input.contains("RIGHT"))
 	        		{
-	        			equipe1[i].moveRight();	        			
+	        			equipe1[i].moveRight();
 	        		}
 	        		if (i==0 && input.contains("UP"))
 	        		{
 	        			equipe1[i].turnLeft();
-	        		} 
-	        		if (i==0 && input.contains("DOWN")) 
+	        		}
+	        		if (i==0 && input.contains("DOWN"))
 	        		{
-	        			equipe1[i].turnRight();	        			
+	        			equipe1[i].turnRight();
 	        		}
 	        		if (i==1 && input.contains("Q"))
 	        		{
 	        			equipe1[i].moveLeft();
-	        		} 
-	        		if (i==1 && input.contains("D")) 
+	        		}
+	        		if (i==1 && input.contains("D"))
 	        		{
-	        			equipe1[i].moveRight();	        			
+	        			equipe1[i].moveRight();
 	        		}
 	        		if (i==1 && input.contains("Z"))
 	        		{
 	        			equipe1[i].turnLeft();
-	        		} 
-	        		if (i==1 && input.contains("S")) 
+	        		}
+	        		if (i==1 && input.contains("S"))
 	        		{
-	        			equipe1[i].turnRight();	        			
+	        			equipe1[i].turnRight();
 	        		}
 	        		if (input.contains("SPACE")){
 	        			equipe1[i].shoot();
 					}
-	        		
+
 	        		if (input.contains("ENTER")){
-	        			equipe2[i].shoot();
+	        			equipeRobot[i].shoot();
 					}
 
 	        		equipe1[i].display();
-					equipe2[i].display();
-					equipe2[i].MouvementRandom();
+					equipeRobot[i].display();
+					equipeRobot[i].MouvementRandom();
+					equipeRobot[i].Turning_IA();
 
 	    	    }
 
@@ -169,13 +170,12 @@ public class Field extends Canvas {
 	     
 	}
 
-	public Player[] getEquipe1() {
+	public Human[] getEquipe1() {
 		return equipe1;
 	}
-	public IA[] getEquipe2() {
-		return equipe2;
+	public IA[] getequipeRobot() {
+		return equipeRobot;
 	}
-
 	public Projectile getProjectile() {
 		return balle;
 	}

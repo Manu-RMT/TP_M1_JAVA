@@ -92,62 +92,6 @@ public class Player
 		  Rotate r = new Rotate(angle, px, py);
 		  gc.setTransform(r.getMxx(), r.getMyx(), r.getMxy(), r.getMyy(), r.getTx(), r.getTy());
 	  }
-	  
-	  /**
-	   *  Deplacement du joueur vers la gauche, on cantonne le joueur sur le plateau de jeu
-	   */
-	 
-	  void moveLeft() 
-	  {	    
-	    if (x > 10 && x < 520) 
-	    {
-			spriteAnimate();
-		    x -= step;
-	    }
-	  }
-
-	  /**
-	   *  Deplacement du joueur vers la droite
-	   */
-	  void moveRight() 
-	  {
-	    if (x > 10 && x < 520) 
-	    {
-			spriteAnimate();
-		    x += step;
-	    }
-	  }
-
-	  
-	  /**
-	   *  Rotation du joueur vers la gauche
-	   */
-	  void turnLeft() 
-	  {
-	    if (angle > 0 && angle < 180) 
-	    {
-	    	angle += 1;
-	    }
-	    else {
-	    	angle += 1;
-	    }
-
-	  }
-
-	  /**
-	   *  Rotation du joueur vers la droite
-	   */
-	  void turnRight() 
-	  {
-	    if (angle > 0 && angle < 180) 
-	    {
-	    	angle -=1;
-	    }
-	    else {
-	    	angle -= 1;
-	    }
-	  }
-
 
 	  void shoot(){
 	  	sprite.playShoot();
