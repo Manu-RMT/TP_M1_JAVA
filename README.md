@@ -2,8 +2,11 @@
 
 ## Installation
 
---git clone https://github.com/Manu-RMT/TP_M1_JAVA.git   
-
+```
+***
+$ git clone https://github.com/Manu-RMT/TP_M1_JAVA.git   
+***
+```
 ## Verification avant lancement du programme
 ```
 $ vérifier les dependances
