@@ -7,7 +7,7 @@
 $ git clone https://github.com/Manu-RMT/TP_M1_JAVA.git   
 ***
 ```
-## Verification avant lancement du programme
+## Vérification avant lancement du programme
 ```
 $ vérifier les dependances
 $ vérifier que Maven est bien installé
