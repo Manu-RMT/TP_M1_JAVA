@@ -8,15 +8,35 @@ import javafx.util.Duration;
 import java.lang.Math;
 
 
-public class Projectile {
+public final class Projectile {
 
-	double vitesse;
+	private static volatile Projectile instance = null;
+	
+	
+    double vitesse;
     double direction;
     Image projectile;
     double xpos;
     double ypos;
     Sprite sprite;
-    GraphicsContext graphicsContext;
+    GraphicsContext graphicsContext;   
+    
+    private Projectile() {
+        super();
+    }
+    
+    public final static Projectile getInstance() {
+    	if (Projectile.instance == null) {
+    		synchronized(Projectile.class) {
+                if (Projectile.instance == null) {
+                  Projectile.instance = new Projectile();
+                }
+              }
+           }
+        return Projectile.instance;
+    }
+    
+
 
     Projectile(GraphicsContext gc,double angle, double xproj, double yproj){
         graphicsContext = gc;
