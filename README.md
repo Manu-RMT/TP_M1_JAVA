@@ -2,16 +2,19 @@
 
 ## Installation
 
-$ git clone https://github.com/Manu-RMT/TP_M1_JAVA.git   
+--git clone https://github.com/Manu-RMT/TP_M1_JAVA.git   
 
 ## Verification avant lancement du programme
+```
 $ vérifier les dependances
 $ verifier que Maven est bien installé
+```
 
 ## Lancement Programme 
+```
 $ ouvrir le repertoire du projet avec un IDE Java (Eclipse, IntelliJ, ...)
 $ cliquer sur le bouton RUN
-
+```
 ## Table des contennus
 1. App
 2. Fields
