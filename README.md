@@ -27,4 +27,4 @@ $ cliquer sur le bouton RUN
 6. IA
 7. Projectile
 
-### RAMANITRA Manuel - Quentin Montaland 
+### Manuel RAMANITRA - Quentin MONTALAND 
